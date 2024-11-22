@@ -21,12 +21,38 @@ class _MuslimSaintsScreenState extends State<MuslimSaintsScreen> {
     'Hazrat Abdul Qadir Gilani',
   ];
 
-  Future<String> fetchStory(String saint) async {
-    DocumentSnapshot doc = await FirebaseFirestore.instance
-        .collection(widget.ageGroup)
-        .doc(saint)
-        .get();
-    return doc['story'] ?? 'No story available';
+  Future<Map<String, String>> fetchStory(String saint) async {
+    try {
+      String collectionName;
+      if (widget.ageGroup == '3-6') {
+        collectionName = 'saints3to6';
+      } else if (widget.ageGroup == '7-10') {
+        collectionName = 'saints7to10';
+      } else if (widget.ageGroup == '11-12') {
+        collectionName = 'saints11to12';
+      } else {
+        return {
+          'story': 'Error fetching story',
+          'image': '',
+        };
+      }
+
+      String documentId = saint.toLowerCase().replaceAll(' ', '_');
+      DocumentSnapshot doc = await FirebaseFirestore.instance
+          .collection(collectionName)
+          .doc(documentId)
+          .get();
+      return {
+        'story': doc['story'] ?? 'No story available',
+        'image': doc['image'] ?? '',
+      };
+    } catch (e) {
+      print('Error fetching story: $e');
+      return {
+        'story': 'Error fetching story',
+        'image': '',
+      };
+    }
   }
 
   @override
@@ -64,13 +90,14 @@ class _MuslimSaintsScreenState extends State<MuslimSaintsScreen> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () async {
-                          String story = await fetchStory(muslimSaints[index]);
+                          Map<String, String> data =
+                              await fetchStory(muslimSaints[index]);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => StoryScreen(
-                                      story: story,
-                                      imageUrl: '',
+                                      story: data['story']!,
+                                      imageUrl: data['image']!,
                                     )),
                           );
                         },

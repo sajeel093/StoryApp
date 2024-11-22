@@ -37,9 +37,7 @@ class _ProphetsScreenState extends State<ProphetsScreen> {
         };
       }
 
-      // Convert prophet name to lowercase and replace spaces with underscores
       String documentId = prophet.toLowerCase().replaceAll(' ', '_');
-
       DocumentSnapshot doc = await FirebaseFirestore.instance
           .collection(collectionName)
           .doc(documentId)
@@ -92,7 +90,6 @@ class _ProphetsScreenState extends State<ProphetsScreen> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () async {
-                          print('Tapped on: ${prophets[index]}');
                           Map<String, String> data =
                               await fetchStory(prophets[index]);
                           Navigator.push(
