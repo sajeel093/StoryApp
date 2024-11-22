@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/add_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_application_1/add_screen.dart';
 import 'package:flutter_application_1/storyScreen.dart';
 
 class ProphetsScreen extends StatefulWidget {
@@ -37,14 +37,16 @@ class _ProphetsScreenState extends State<ProphetsScreen> {
         };
       }
 
+      // Convert prophet name to lowercase and replace spaces with underscores
+      String documentId = prophet.toLowerCase().replaceAll(' ', '_');
+
       DocumentSnapshot doc = await FirebaseFirestore.instance
           .collection(collectionName)
-          .doc('adam') // Use the correct document ID
+          .doc(documentId)
           .get();
       return {
         'story': doc['story'] ?? 'No story available',
         'image': doc['image'] ?? '',
-        "image2": doc['image2'] ?? '',
       };
     } catch (e) {
       print('Error fetching story: $e');

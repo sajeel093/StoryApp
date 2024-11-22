@@ -12,12 +12,14 @@ class StoryScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Story')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            if (imageUrl.isNotEmpty) Image.network(imageUrl),
-            SizedBox(height: 16),
-            Text(story),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              if (imageUrl.isNotEmpty) Image.network(imageUrl),
+              SizedBox(height: 16),
+              Text(story),
+            ],
+          ),
         ),
       ),
     );
