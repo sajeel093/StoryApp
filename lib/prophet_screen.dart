@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/add_screen.dart';
+import 'package:flutter_application_1/add_stories.dart';
 import 'package:flutter_application_1/storyScreen.dart';
 
 class ProphetsScreen extends StatefulWidget {
@@ -127,18 +127,6 @@ class _ProphetsScreenState extends State<ProphetsScreen> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF6E62C9),
-        child: IconButton(
-          icon: Icon(Icons.add, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddStoryScreen()),
-            );
-          },
-        ),
       ),
     );
   }

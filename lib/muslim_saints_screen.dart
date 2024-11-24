@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/add_screen.dart';
+import 'package:flutter_application_1/add_stories.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/storyScreen.dart';
 
@@ -78,7 +78,7 @@ class _MuslimSaintsScreenState extends State<MuslimSaintsScreen> {
                       'STORIES OF THE MUSLIM SAINTS',
                       style: TextStyle(
                         fontSize: 20,
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 0, 0, 0),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -127,18 +127,6 @@ class _MuslimSaintsScreenState extends State<MuslimSaintsScreen> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFF6E62C9),
-        child: IconButton(
-          icon: Icon(Icons.add, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AddStoryScreen()),
-            );
-          },
-        ),
       ),
     );
   }
