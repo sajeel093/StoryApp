@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/home_screen.dart';
+import 'package:flutter_application_1/login_screen.dart';
 import 'dart:async';
 import 'package:flutter_application_1/select_age.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -49,7 +50,7 @@ class _FirstScreenState extends State<FirstScreen> {
     _timer = Timer(Duration(seconds: _timerSeconds), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => MainScreen()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
     });
   }

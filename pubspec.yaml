@@ -39,6 +39,8 @@ dependencies:
   http: ^1.2.2
   firebase_core: ^2.32.0
   image_picker: ^1.1.2
+  firebase_auth: ^4.16.0
+  modal_progress_hud_nsn: ^0.5.1
 
 dev_dependencies:
   flutter_test:
