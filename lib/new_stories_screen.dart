@@ -3,7 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/add_stories.dart';
 
 class NewStoriesScreen extends StatefulWidget {
-  const NewStoriesScreen({super.key});
+  final String username;
+
+  const NewStoriesScreen({super.key, required this.username});
 
   @override
   _NewStoriesScreenState createState() => _NewStoriesScreenState();
@@ -160,6 +162,8 @@ class _NewStoriesScreenState extends State<NewStoriesScreen> {
                                       ),
                                     ),
                                   ),
+                                  subtitle: Text(
+                                      'Added by: ${data['addedBy'] ?? 'Unknown'}'),
                                   trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -242,7 +246,10 @@ class _NewStoriesScreenState extends State<NewStoriesScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AddStoryScreen()),
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            AddStoryScreen(username: widget.username),
+                      ),
                     );
                   },
                   child: const Text(

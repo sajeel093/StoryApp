@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Import this for SystemNavigator
+import 'package:flutter_application_1/login_screen.dart';
 
 import 'package:flutter_application_1/new_stories_screen.dart';
 
@@ -64,6 +65,23 @@ class _MainScreenState extends State<MainScreen>
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout),
+              onPressed: () {
+                // Navigate back to the login screen
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        LoginPage(), // Replace with your login screen
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
         body: Stack(
           children: [
             // Background image covering the entire screen
@@ -146,8 +164,8 @@ class _MainScreenState extends State<MainScreen>
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        NewStoriesScreen(), // Default age group
+                                    builder: (context) => NewStoriesScreen(
+                                        username: widget.username),
                                   ),
                                 );
                               },

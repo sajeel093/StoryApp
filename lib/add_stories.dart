@@ -3,6 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/new_stories_screen.dart';
 
 class AddStoryScreen extends StatefulWidget {
+  final String username;
+
+  const AddStoryScreen({super.key, required this.username});
+
   @override
   _AddStoryScreenState createState() => _AddStoryScreenState();
 }
@@ -27,6 +31,7 @@ class _AddStoryScreenState extends State<AddStoryScreen> {
           'title': title,
           'story': story,
           'image': imageUrl,
+          'addedBy': widget.username,
         });
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -37,7 +42,9 @@ class _AddStoryScreenState extends State<AddStoryScreen> {
 
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => NewStoriesScreen()),
+          MaterialPageRoute(
+              builder: (context) =>
+                  NewStoriesScreen(username: widget.username)),
         );
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
