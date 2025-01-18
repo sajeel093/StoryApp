@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_application_1/add_stories.dart';
+
 import 'package:flutter_application_1/display_stories_screen.dart';
 
 class ProphetsScreen extends StatefulWidget {

@@ -50,7 +50,7 @@ class _FirstScreenState extends State<FirstScreen> {
     _timer = Timer(Duration(seconds: _timerSeconds), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => LoginPage()),
       );
     });
   }

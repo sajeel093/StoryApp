@@ -6,6 +6,10 @@ import 'package:flutter_application_1/new_stories_screen.dart';
 import 'package:flutter_application_1/select_age.dart';
 
 class MainScreen extends StatefulWidget {
+  final String username;
+
+  MainScreen({required this.username});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -76,6 +80,20 @@ class _MainScreenState extends State<MainScreen>
             SafeArea(
               child: Column(
                 children: [
+                  // Display the username at the top
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(
+                      child: Text(
+                        'Hi ${widget.username}',
+                        style: const TextStyle(
+                          fontSize: 25,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                   // Title at the top, similar to AppBar
                   const Padding(
                     padding: EdgeInsets.all(16.0),
